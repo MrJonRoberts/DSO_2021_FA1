@@ -1,0 +1,28 @@
+<!doctype html>
+<head>
+<title>{% block title %}{% endblock %} </title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+<nav>
+  <h1>Page Nav</h1>
+  <ul>
+
+      <li><a href="/register">Register</a>
+      <li><a href="/login">Log In</a>
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
+<script type=text/javascript src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+</body>
+</html>
